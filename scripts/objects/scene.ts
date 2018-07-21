@@ -1,12 +1,10 @@
-module scenes {
-    export class Level1 extends objects.Scene {
+module objects {
+    export abstract class Scene extends createjs.Container {
         // member variables
 
         // constructors
         constructor() {
             super();
-
-            this.Start();
         }
 
         // private methods
@@ -14,14 +12,10 @@ module scenes {
         // public methods
         public Start():void {
 
-            this.Main();
         }
 
         public Update():void {
-            //update objects
 
-            //collision check
-            
         }
 
         public Reset():void {
@@ -29,12 +23,12 @@ module scenes {
         }
 
         public Destroy():void {
-            this.removeAllChildren();
+
         }
 
         public Main():void {
-            console.log(`starting - PLAY SCENE`);
-            // add children
+            
         }
+
     }
-} 
+}
