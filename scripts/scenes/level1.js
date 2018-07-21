@@ -12,7 +12,6 @@ var scenes;
 (function (scenes) {
     var Level1 = /** @class */ (function (_super) {
         __extends(Level1, _super);
-        // member variables
         // constructors
         function Level1() {
             var _this = _super.call(this) || this;
@@ -22,10 +21,14 @@ var scenes;
         // private methods
         // public methods
         Level1.prototype.Start = function () {
+            this._background = new objects.Background();
+            this._floor = new objects.Floor();
             this.Main();
         };
         Level1.prototype.Update = function () {
             //update objects
+            this._background.Update();
+            this._floor.Update();
             //collision check
         };
         Level1.prototype.Reset = function () {
@@ -36,6 +39,8 @@ var scenes;
         Level1.prototype.Main = function () {
             console.log("starting - PLAY SCENE");
             // add children
+            this.addChild(this._background);
+            this.addChild(this._floor);
         };
         return Level1;
     }(objects.Scene));

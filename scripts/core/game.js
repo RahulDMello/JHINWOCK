@@ -8,8 +8,8 @@
     var CurrentScene;
     var CurrentState;
     var Manifest = [
-        { id: "StartButton", src: "/Assets/images/bg.png" },
-        { id: "NextButton", src: "/Assets/images/floor.png" }
+        { id: "bg", src: "/Assets/images/bg.png" },
+        { id: "floor", src: "/Assets/images/floor.png" }
     ];
     function Init() {
         console.log("%c Assets Loading...", "font-weight:bold; font-size:20px; color: green;");
@@ -27,7 +27,7 @@
         stage.enableMouseOver(20); // enables mouse over events
         createjs.Ticker.framerate = 60; // sets framerate to 60fps
         createjs.Ticker.on("tick", Update);
-        CurrentState = config.Scene.START;
+        CurrentState = config.Scene.LEVEL1;
         managers.Game.CurrentState = CurrentState;
         // This is where all the magic happens
         Main();
