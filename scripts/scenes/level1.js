@@ -19,16 +19,45 @@ var scenes;
             return _this;
         }
         // private methods
+        Level1.prototype.doBoxCollide = function (box1, box2) {
+            return ((box1.x + box1.getBounds().width) < box2.x) && (box1.x > box2.x);
+        };
+        Level1.prototype.fixBoxes = function () {
+            var flag = false;
+            for (var i = 0; i < this._boxes.length; i++) {
+                var box1 = this._boxes[i];
+                var j = i + 1 == this._boxes.length ? 0 : i + 1;
+                var box2 = this._boxes[j];
+                if (this.doBoxCollide(box1, box2)) {
+                    flag = true;
+                    break;
+                }
+            }
+            if (flag) {
+                this.fixBoxes();
+            }
+        };
         // public methods
         Level1.prototype.Start = function () {
+            this._numOfBoxes = 3;
             this._background = new objects.Background();
             this._floor = new objects.Floor();
+            this._boxes = new Array();
+            this._hero = new objects.Hero();
+            for (var i = 0; i < this._numOfBoxes; i++) {
+                this._boxes.push(new objects.Box(i + 1));
+            }
             this.Main();
         };
-        Level1.prototype.Update = function () {
+        Level1.prototype.Update = function (keyCode) {
             //update objects
             this._background.Update();
-            this._floor.Update();
+            this._floor.Update(keyCode);
+            this._boxes.forEach(function (box) {
+                box.Update(keyCode);
+            });
+            this.fixBoxes();
+            this._hero.Update(keyCode);
             //collision check
         };
         Level1.prototype.Reset = function () {
@@ -37,10 +66,15 @@ var scenes;
             this.removeAllChildren();
         };
         Level1.prototype.Main = function () {
+            var _this = this;
             console.log("starting - PLAY SCENE");
             // add children
             this.addChild(this._background);
             this.addChild(this._floor);
+            this._boxes.forEach(function (box) {
+                _this.addChild(box);
+            });
+            this.addChild(this._hero);
         };
         return Level1;
     }(objects.Scene));

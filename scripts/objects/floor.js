@@ -23,15 +23,28 @@ var objects;
             return _this;
         }
         //private methods
+        Floor.prototype._checkBounds = function () {
+            if (this.x < config.Screen.WIDTH - this.getBounds().width) {
+                this.Reset();
+            }
+        };
         // public methods
         Floor.prototype.Start = function () {
             // init
-            this.x = 0;
             this.y = config.Screen.HEIGHT - this.getBounds().height;
+            this.Reset();
         };
-        Floor.prototype.Update = function () {
+        Floor.prototype.Update = function (keyCode) {
+            switch (keyCode) {
+                case 68: // D key
+                case 39: // right arrow key
+                    this.x -= config.ObjectSpeed.SPEED;
+                    break;
+            }
+            this._checkBounds();
         };
         Floor.prototype.Reset = function () {
+            this.x = 0;
         };
         return Floor;
     }(createjs.Bitmap));

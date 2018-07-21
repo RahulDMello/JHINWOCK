@@ -21,7 +21,7 @@ var objects;
         // public methods
         Scene.prototype.Start = function () {
         };
-        Scene.prototype.Update = function () {
+        Scene.prototype.Update = function (keyCode) {
         };
         Scene.prototype.Reset = function () {
         };

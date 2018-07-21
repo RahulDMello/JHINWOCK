@@ -7,11 +7,21 @@
     var AssetManager;
     var CurrentScene;
     var CurrentState;
+    var keyCode;
     var Manifest = [
         { id: "bg", src: "/Assets/images/bg.png" },
-        { id: "floor", src: "/Assets/images/floor.png" }
+        { id: "floor", src: "/Assets/images/floor.png" },
+        { id: "box", src: "/Assets/images/dummy.png" },
+        { id: "launcher", src: "/Assets/images/tower.png" },
+        { id: "hero", src: "/Assets/images/hero.png" }
     ];
     function Init() {
+        document.onkeydown = function (event) {
+            keyCode = event.keyCode;
+        };
+        document.onkeyup = function (event) {
+            keyCode = 0;
+        };
         console.log("%c Assets Loading...", "font-weight:bold; font-size:20px; color: green;");
         AssetManager = new createjs.LoadQueue();
         managers.Game.AssetManager = AssetManager; // set as single instance of the LoadQueue object
@@ -37,7 +47,7 @@
             CurrentState = managers.Game.CurrentState;
             Main();
         }
-        CurrentScene.Update();
+        CurrentScene.Update(keyCode);
         stage.update();
     }
     function Main() {
