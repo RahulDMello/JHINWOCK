@@ -59,7 +59,7 @@ var scenes;
             this._boxes.forEach(function (box) {
                 box.Update(keyCodes);
             });
-            this._launcher.Update();
+            this._launcher.Update(keyCodes);
             this.fixBoxes();
             this._hero.Update(keyCodes);
             //collision check
