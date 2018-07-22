@@ -49,15 +49,15 @@ var scenes;
             }
             this.Main();
         };
-        Level1.prototype.Update = function (keyCode) {
+        Level1.prototype.Update = function (keyCodes) {
             //update objects
             this._background.Update();
-            this._floor.Update(keyCode);
+            this._floor.Update(keyCodes);
             this._boxes.forEach(function (box) {
-                box.Update(keyCode);
+                box.Update(keyCodes);
             });
             this.fixBoxes();
-            this._hero.Update(keyCode);
+            this._hero.Update(keyCodes);
             //collision check
         };
         Level1.prototype.Reset = function () {

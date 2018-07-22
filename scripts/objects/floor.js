@@ -34,14 +34,21 @@ var objects;
             this.y = config.Screen.HEIGHT - this.getBounds().height;
             this.Reset();
         };
-        Floor.prototype.Update = function (keyCode) {
-            switch (keyCode) {
-                case 68: // D key
-                case 39: // right arrow key
-                    this.x -= config.ObjectSpeed.SPEED;
-                    break;
-            }
-            this._checkBounds();
+        Floor.prototype.Update = function (keyCodes) {
+            var _this = this;
+            var flag = true;
+            keyCodes.forEach(function (keyCode) {
+                switch (keyCode) {
+                    case 68: // D key
+                    case 39: // right arrow key
+                        if (flag) {
+                            _this.x -= config.ObjectSpeed.SPEED;
+                            flag = !flag;
+                        }
+                        break;
+                }
+                _this._checkBounds();
+            });
         };
         Floor.prototype.Reset = function () {
             this.x = 0;

@@ -20,8 +20,8 @@ var objects;
             var _this = _super.call(this, managers.Game.AssetManager.getResult("hero")) || this;
             _this._isJumping = false;
             _this._isFalling = false;
-            _this._jumpStep = -10;
-            _this._gravity = -2;
+            _this._jumpStep = -16;
+            _this._gravity = -8;
             _this._maxJumpHeight = config.Screen.HEIGHT - (3 * _this.getBounds().height);
             _this._minY = config.Screen.HEIGHT - config.Floor.HEIGHT;
             _this.Start();
@@ -47,18 +47,21 @@ var objects;
             this.x = Math.floor(config.Screen.WIDTH / 3);
             this.Reset();
         };
-        Hero.prototype.Update = function (keyCode) {
-            switch (keyCode) {
-                case 68: // D key
-                case 39: // right arrow key
-                    //this.x += config.ObjectSpeed.SPEED;
-                    break;
-                case 32:
-                case 87:
-                case 38:
-                    this._isJumping = !this._isFalling;
-                    break;
-            }
+        Hero.prototype.Update = function (keyCodes) {
+            var _this = this;
+            keyCodes.forEach(function (keyCode) {
+                switch (keyCode) {
+                    case 68: // D key
+                    case 39: // right arrow key
+                        //this.x += config.ObjectSpeed.SPEED;
+                        break;
+                    case 32:
+                    case 87:
+                    case 38:
+                        _this._isJumping = !_this._isFalling;
+                        break;
+                }
+            });
             this.y -= this._gravity;
             if (this._isJumping) {
                 this.y += this._jumpStep;

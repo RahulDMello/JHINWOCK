@@ -50,18 +50,18 @@ module scenes {
             this.Main();
         }
 
-        public Update(keyCode: number):void {
+        public Update(keyCodes: Array<number>):void {
             //update objects
             this._background.Update();
-            this._floor.Update(keyCode);
+            this._floor.Update(keyCodes);
 
             this._boxes.forEach(box => {
-                box.Update(keyCode);
+                box.Update(keyCodes);
             });
 
             this.fixBoxes();
 
-            this._hero.Update(keyCode);
+            this._hero.Update(keyCodes);
 
             //collision check
             

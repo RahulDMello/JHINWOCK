@@ -36,14 +36,21 @@ var objects;
             this.y = config.Screen.HEIGHT - config.Floor.HEIGHT;
             this.Reset();
         };
-        Box.prototype.Update = function (keyCode) {
-            switch (keyCode) {
-                case 68: // D key
-                case 39: // right arrow key
-                    this.x -= config.ObjectSpeed.SPEED;
-                    break;
-            }
-            this._checkBounds();
+        Box.prototype.Update = function (keyCodes) {
+            var _this = this;
+            var flag = true;
+            keyCodes.forEach(function (keyCode) {
+                switch (keyCode) {
+                    case 68: // D key
+                    case 39: // right arrow key
+                        if (flag) {
+                            _this.x -= config.ObjectSpeed.SPEED;
+                            flag = !flag;
+                        }
+                        break;
+                }
+                _this._checkBounds();
+            });
         };
         Box.prototype.Reset = function () {
             this.x = Math.floor(Math.random() * config.Screen.WIDTH) + (config.Screen.WIDTH * this._index);

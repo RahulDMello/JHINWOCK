@@ -7,7 +7,7 @@
     let AssetManager: createjs.LoadQueue;
     let CurrentScene: objects.Scene;
     let CurrentState: config.Scene;
-    let keyCode: Number;
+    let keyCodes: number[];
 
     let Manifest = [
         {id: "bg", src:"/Assets/images/bg.png"},
@@ -20,12 +20,20 @@
 
     function Init():void {
 
+        keyCodes = new Array<number>();
+
         document.onkeydown = function(event) {
-            keyCode = event.keyCode;
+            if(keyCodes.indexOf(event.keyCode) == -1) {
+                keyCodes.push(event.keyCode);
+            }
         }
 
         document.onkeyup = function(event) {
-            keyCode = 0;
+            let index = keyCodes.indexOf(event.keyCode);
+            if(index > -1) {
+                keyCodes.splice(index, 1);
+            }
+            console.log(keyCodes);
         }
 
         console.log(`%c Assets Loading...`,"font-weight:bold; font-size:20px; color: green;");
@@ -58,8 +66,8 @@
             Main();
         }
 
-        CurrentScene.Update(keyCode);
-
+        CurrentScene.Update(keyCodes);
+        
         stage.update();
     }
 

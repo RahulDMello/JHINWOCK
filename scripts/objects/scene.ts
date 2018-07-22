@@ -14,7 +14,7 @@ module objects {
 
         }
 
-        public Update(keyCode: Number):void {
+        public Update(keyCode: Array<number>):void {
 
         }
 

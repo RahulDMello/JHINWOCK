@@ -16,8 +16,8 @@ module objects {
             super(managers.Game.AssetManager.getResult("hero"));
             this._isJumping = false;
             this._isFalling = false;
-            this._jumpStep = -10;
-            this._gravity = -2;
+            this._jumpStep = -16;
+            this._gravity = -8;
             this._maxJumpHeight = config.Screen.HEIGHT - (3 * this.getBounds().height);
             this._minY = config.Screen.HEIGHT - config.Floor.HEIGHT;
             this.Start();
@@ -45,18 +45,21 @@ module objects {
             this.Reset();
         }
 
-        public Update(keyCode: number):void {
-            switch(keyCode) {
-                case 68:  // D key
-                case 39:  // right arrow key
-                    //this.x += config.ObjectSpeed.SPEED;
-                    break;
-                case 32:
-                case 87:
-                case 38:
-                    this._isJumping = !this._isFalling;
-                    break;
-            }
+        public Update(keyCodes: Array<number>):void {
+            keyCodes.forEach(keyCode => {
+                switch(keyCode) {
+                    case 68:  // D key
+                    case 39:  // right arrow key
+                        //this.x += config.ObjectSpeed.SPEED;
+                        break;
+                    case 32:
+                    case 87:
+                    case 38:
+                        this._isJumping = !this._isFalling;
+                        break;
+                }
+            });
+
             this.y -= this._gravity;
             if(this._isJumping) {
                 this.y += this._jumpStep;
