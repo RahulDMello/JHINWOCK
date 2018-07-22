@@ -13,7 +13,8 @@
         { id: "floor", src: "/Assets/images/floor.png" },
         { id: "box", src: "/Assets/images/dummy.png" },
         { id: "launcher", src: "/Assets/images/tower.png" },
-        { id: "hero", src: "/Assets/images/hero.png" }
+        { id: "hero", src: "/Assets/images/hero.png" },
+        { id: "launcher", src: "Assets/images/tower.png" }
     ];
     function Init() {
         keyCodes = new Array();

@@ -4,7 +4,6 @@ var managers;
         function Collision() {
         }
         Collision.check = function (hero, otherObj) {
-            console.log("Collision with " + otherObj.name);
             switch (otherObj.name) {
                 case "box":
                     Collision.handleCollisionWithBox(hero, otherObj);

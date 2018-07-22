@@ -1,52 +1,57 @@
 module objects {
-    export class Launcher extends GameObject {
+    export class Launcher extends createjs.Bitmap {
         //member variables
-        private _index: number;
+        private _movespd: number;
+        private width: number;
+        private height: number;
+        private isHeadingIn: boolean;
 
         /**
          *Creates an instance of Ocean.
-         * @memberof Background
+         * @memberof launcher
          */
-        constructor(index: number) {
-            super("box");
-            this._index = index;
+        constructor() {
+            super(managers.Game.AssetManager.getResult("launcher"));
+            this.width = this.getBounds().width;
+            this.height = this.getBounds().height;
+            this._movespd = 5;
+            this.isHeadingIn = true;
             this.Start();
         }
 
         //private methods
-        private _checkBounds(): void {
-            if(this.x < -this.getBounds().width) {
-                this.Reset();
+        private _checkbounds(): void {
+            if(this.x < config.Screen.WIDTH) {
+                this.isHeadingIn = false;
             }
+            if(this.x > config.Screen.WIDTH + this.width) {
+                this.Reset();
+            } 
         }
 
         // public methods
         public Start():void {
             // init
-            this.regX = 0;
-            this.regY = this.getBounds().height;
-            this.y = config.Screen.HEIGHT - config.Floor.HEIGHT;
+            this.regX = this.width;
+            this.regY = this.height;
+            this.x = config.Screen.WIDTH + this.width + 5;
             this.Reset();
         }
 
-        public Update(keyCodes: Array<number>):void {
-            let flag: boolean = true;
-            keyCodes.forEach(keyCode => {
-                switch(keyCode) {
-                    case 68:  // D key
-                    case 39:  // right arrow key
-                        if(flag) {
-                            this.x -= config.ObjectSpeed.SPEED;
-                            flag = !flag;
-                        }
-                        break;
-                }
-                this._checkBounds();    
-            });
+        public Update():void {
+            console.log(this.isHeadingIn);
+            if(this.isHeadingIn) {
+                this.x -= this._movespd;
+            } else {
+                this.x += this._movespd;
+            }
+            this._checkbounds();
         }
 
         public Reset():void {
-            this.x = Math.floor(Math.random() * config.Screen.WIDTH) + (config.Screen.WIDTH  * this._index);
+            this.y = Math.floor(Math.random() * (config.Screen.HEIGHT - this.height - config.Floor.HEIGHT)) + config.Floor.HEIGHT + this.height;
+            this.isHeadingIn = true;
+            // this.y = Math.floor((Math.random() * config.Screen.HEIGHT / 3) + (config.Screen.HEIGHT / 3)) * this._index - config.Floor.HEIGHT;
         }
 
     }

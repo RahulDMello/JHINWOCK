@@ -14,49 +14,51 @@ var objects;
         __extends(Launcher, _super);
         /**
          *Creates an instance of Ocean.
-         * @memberof Background
+         * @memberof launcher
          */
-        function Launcher(index) {
-            var _this = _super.call(this, "box") || this;
-            _this._index = index;
+        function Launcher() {
+            var _this = _super.call(this, managers.Game.AssetManager.getResult("launcher")) || this;
+            _this.width = _this.getBounds().width;
+            _this.height = _this.getBounds().height;
+            _this._movespd = 5;
+            _this.isHeadingIn = true;
             _this.Start();
             return _this;
         }
         //private methods
-        Launcher.prototype._checkBounds = function () {
-            if (this.x < -this.getBounds().width) {
+        Launcher.prototype._checkbounds = function () {
+            if (this.x < config.Screen.WIDTH) {
+                this.isHeadingIn = false;
+            }
+            if (this.x > config.Screen.WIDTH + this.width) {
                 this.Reset();
             }
         };
         // public methods
         Launcher.prototype.Start = function () {
             // init
-            this.regX = 0;
-            this.regY = this.getBounds().height;
-            this.y = config.Screen.HEIGHT - config.Floor.HEIGHT;
+            this.regX = this.width;
+            this.regY = this.height;
+            this.x = config.Screen.WIDTH + this.width + 5;
             this.Reset();
         };
-        Launcher.prototype.Update = function (keyCodes) {
-            var _this = this;
-            var flag = true;
-            keyCodes.forEach(function (keyCode) {
-                switch (keyCode) {
-                    case 68: // D key
-                    case 39: // right arrow key
-                        if (flag) {
-                            _this.x -= config.ObjectSpeed.SPEED;
-                            flag = !flag;
-                        }
-                        break;
-                }
-                _this._checkBounds();
-            });
+        Launcher.prototype.Update = function () {
+            console.log(this.isHeadingIn);
+            if (this.isHeadingIn) {
+                this.x -= this._movespd;
+            }
+            else {
+                this.x += this._movespd;
+            }
+            this._checkbounds();
         };
         Launcher.prototype.Reset = function () {
-            this.x = Math.floor(Math.random() * config.Screen.WIDTH) + (config.Screen.WIDTH * this._index);
+            this.y = Math.floor(Math.random() * (config.Screen.HEIGHT - this.height - config.Floor.HEIGHT)) + config.Floor.HEIGHT + this.height;
+            this.isHeadingIn = true;
+            // this.y = Math.floor((Math.random() * config.Screen.HEIGHT / 3) + (config.Screen.HEIGHT / 3)) * this._index - config.Floor.HEIGHT;
         };
         return Launcher;
-    }(objects.GameObject));
+    }(createjs.Bitmap));
     objects.Launcher = Launcher;
 })(objects || (objects = {}));
 //# sourceMappingURL=launcher.js.map

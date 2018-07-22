@@ -2,7 +2,6 @@ module managers {
     export class Collision {
 
         public static check(hero: objects.Hero, otherObj: objects.GameObject): void {
-            console.log(`Collision with ${otherObj.name}`);
             switch(otherObj.name) {
                 case "box":
                     Collision.handleCollisionWithBox(hero, otherObj);

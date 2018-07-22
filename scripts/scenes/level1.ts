@@ -6,6 +6,8 @@ module scenes {
         private _boxes: objects.Box[];
         private _numOfBoxes: Number;
         private _hero: objects.Hero;
+        private _launcher: objects.Launcher;
+        private _numOfLaunchers: number;
 
         // constructors
         constructor() {
@@ -38,10 +40,12 @@ module scenes {
         // public methods
         public Start():void {
             this._numOfBoxes = 3;
+            this._numOfLaunchers = 2;
             this._background = new objects.Background();
             this._floor = new objects.Floor();
             this._boxes = new Array<objects.Box>();
             this._hero = new objects.Hero();
+            this._launcher = new objects.Launcher();
             
             for(let i = 0; i < this._numOfBoxes; i++) {
                 this._boxes.push(new objects.Box(i+1));
@@ -58,6 +62,8 @@ module scenes {
             this._boxes.forEach(box => {
                 box.Update(keyCodes);
             });
+
+            this._launcher.Update();
 
             this.fixBoxes();
 
@@ -85,6 +91,7 @@ module scenes {
                 this.addChild(box);
             });
             this.addChild(this._hero);
+            this.addChild(this._launcher);
         }
     }
 } 
