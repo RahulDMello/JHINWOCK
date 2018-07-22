@@ -8,6 +8,16 @@ var managers;
                 case "box":
                     Collision.handleCollisionWithBox(hero, otherObj);
                     break;
+                case "bullet":
+                    Collision.handleCollisionWithBullet(hero, otherObj);
+                    break;
+            }
+        };
+        Collision.handleCollisionWithBullet = function (hero, object) {
+            var P1 = new math.Vec2(hero.x, hero.y);
+            var P2 = new math.Vec2(object.x, object.y);
+            if (math.Vec2.Distance(P1, P2) < hero.halfHeight + object.halfHeight) {
+                managers.Game.CurrentState = config.Scene.END;
             }
         };
         Collision.handleCollisionWithBox = function (hero, object) {

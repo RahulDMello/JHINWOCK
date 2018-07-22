@@ -47,6 +47,7 @@ var scenes;
             this._hero = new objects.Hero();
             this._launcher = new objects.Launcher();
             this._bullets = new Array();
+            this._scoreText = new objects.ScoreText();
             for (var i = 0; i < this._numOfBoxes; i++) {
                 this._boxes.push(new objects.Box(i + 1));
             }
@@ -56,8 +57,14 @@ var scenes;
             this.Main();
         };
         Level1.prototype.Update = function (keyCodes) {
-            var _this = this;
             //update objects
+            var _this = this;
+            for (var i = 0; i < keyCodes.length; i++) {
+                if (keyCodes[i] == 68 || keyCodes[i] == 39) {
+                    managers.Score.SCORE += 1;
+                    break;
+                }
+            }
             this._background.Update();
             this._floor.Update(keyCodes);
             this._boxes.forEach(function (box) {
@@ -71,6 +78,7 @@ var scenes;
             //collision check
             this._boxes.forEach(function (box) { return managers.Collision.check(_this._hero, box); });
             this._bullets.forEach(function (bullet) { return managers.Collision.check(_this._hero, bullet); });
+            this._scoreText.Update();
         };
         Level1.prototype.Reset = function () {
         };
@@ -89,6 +97,7 @@ var scenes;
             this.addChild(this._hero);
             this._bullets.forEach(function (bullet) { return _this.addChild(bullet); });
             this.addChild(this._launcher);
+            this.addChild(this._scoreText);
         };
         return Level1;
     }(objects.Scene));

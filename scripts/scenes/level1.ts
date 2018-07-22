@@ -8,7 +8,8 @@ module scenes {
         private _hero: objects.Hero;
         private _launcher: objects.Launcher;
         private _bullets: objects.Bullet[];
-        private _numOfBullets: number;s
+        private _numOfBullets: number;
+        private _scoreText: objects.ScoreText;
 
         // constructors
         constructor() {
@@ -48,6 +49,7 @@ module scenes {
             this._hero = new objects.Hero();
             this._launcher = new objects.Launcher();
             this._bullets = new Array<objects.Bullet>();
+            this._scoreText = new objects.ScoreText();
             
             for(let i = 0; i < this._numOfBoxes; i++) {
                 this._boxes.push(new objects.Box(i+1));
@@ -62,6 +64,14 @@ module scenes {
 
         public Update(keyCodes: Array<number>):void {
             //update objects
+
+            for (let i = 0; i < keyCodes.length; i++) {
+                if(keyCodes[i] == 68 || keyCodes[i] == 39) {
+                    managers.Score.SCORE += 1;
+                    break;
+                }
+            }
+
             this._background.Update();
             this._floor.Update(keyCodes);
 
@@ -83,6 +93,8 @@ module scenes {
             this._boxes.forEach(box => managers.Collision.check(this._hero, box));
 
             this._bullets.forEach(bullet => managers.Collision.check(this._hero, bullet));
+
+            this._scoreText.Update();
             
         }
 
@@ -105,6 +117,7 @@ module scenes {
             this.addChild(this._hero);
             this._bullets.forEach(bullet => this.addChild(bullet));
             this.addChild(this._launcher);
+            this.addChild(this._scoreText);
         }
     }
 } 

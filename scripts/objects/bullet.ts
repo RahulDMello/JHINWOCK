@@ -7,7 +7,7 @@ module objects {
         private _bulletDistance;
 
         /**
-         *Creates an instance of Ocean.
+         *Creates an instance of Bullet.
          * @memberof Bullet
          */
         constructor(nextY: number, index:number) {
@@ -15,7 +15,7 @@ module objects {
             this._movespd = 10;
             this.NextY = nextY;
             this._index = index;
-            this._bulletDistance = 320;
+            this._bulletDistance = 425;
             this.Start();
         }
 

@@ -13,7 +13,7 @@ var objects;
     var Bullet = /** @class */ (function (_super) {
         __extends(Bullet, _super);
         /**
-         *Creates an instance of Ocean.
+         *Creates an instance of Bullet.
          * @memberof Bullet
          */
         function Bullet(nextY, index) {
@@ -21,7 +21,7 @@ var objects;
             _this._movespd = 10;
             _this.NextY = nextY;
             _this._index = index;
-            _this._bulletDistance = 320;
+            _this._bulletDistance = 425;
             _this.Start();
             return _this;
         }
