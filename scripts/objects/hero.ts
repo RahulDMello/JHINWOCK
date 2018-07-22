@@ -46,6 +46,7 @@ module objects {
         }
 
         public Update(keyCodes: Array<number>):void {
+            let oldJumpState = this._isJumping;
             keyCodes.forEach(keyCode => {
                 switch(keyCode) {
                     case 68:  // D key
@@ -70,6 +71,11 @@ module objects {
             if(this._isJumping) {
                 this.y += this._jumpStep;
             }
+
+            if(this._isJumping && this._isJumping != oldJumpState) {
+                createjs.Sound.play("jump").volume = 0.1; 
+            }
+
             this._checkBounds();
         }
 

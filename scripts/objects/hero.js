@@ -49,6 +49,7 @@ var objects;
         };
         Hero.prototype.Update = function (keyCodes) {
             var _this = this;
+            var oldJumpState = this._isJumping;
             keyCodes.forEach(function (keyCode) {
                 switch (keyCode) {
                     case 68: // D key
@@ -71,6 +72,9 @@ var objects;
             this.y -= this._gravity;
             if (this._isJumping) {
                 this.y += this._jumpStep;
+            }
+            if (this._isJumping && this._isJumping != oldJumpState) {
+                createjs.Sound.play("jump").volume = 0.1;
             }
             this._checkBounds();
         };

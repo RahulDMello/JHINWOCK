@@ -9,13 +9,22 @@
     var CurrentState;
     var keyCodes;
     var Manifest = [
+        //images
         { id: "bg", src: "/Assets/images/bg.png" },
         { id: "floor", src: "/Assets/images/floor.png" },
         { id: "box", src: "/Assets/images/dummy.png" },
         { id: "launcher", src: "/Assets/images/tower.png" },
         { id: "hero", src: "/Assets/images/hero.png" },
         { id: "launcher", src: "Assets/images/tower.png" },
-        { id: "bullet", src: "Assets/images/bullet_02.png" }
+        { id: "bullet", src: "Assets/images/bullet_02.png" },
+        { id: "play", src: "Assets/images/Startbutton.png" },
+        { id: "startbg", src: "Assets/images/mainmenu.png" },
+        { id: "endbg", src: "Assets/images/stageclear.png" },
+        //sounds
+        { id: "startbgm", src: "Assets/audio/mainmenu.mp3" },
+        { id: "level1bgm", src: "Assets/audio/stage1.mp3" },
+        { id: "jump", src: "Assets/audio/jump.m4r" },
+        { id: "endbgm", src: "Assets/audio/gameover.mp3" }
     ];
     function Init() {
         keyCodes = new Array();
@@ -45,7 +54,7 @@
         stage.enableMouseOver(20); // enables mouse over events
         createjs.Ticker.framerate = 60; // sets framerate to 60fps
         createjs.Ticker.on("tick", Update);
-        CurrentState = config.Scene.LEVEL1;
+        CurrentState = config.Scene.START;
         managers.Game.CurrentState = CurrentState;
         // This is where all the magic happens
         Main();

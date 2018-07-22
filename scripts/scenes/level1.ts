@@ -10,6 +10,7 @@ module scenes {
         private _bullets: objects.Bullet[];
         private _numOfBullets: number;
         private _scoreText: objects.ScoreText;
+        private _bgMusic: createjs.AbstractSoundInstance;
 
         // constructors
         constructor() {
@@ -41,6 +42,11 @@ module scenes {
 
         // public methods
         public Start():void {
+
+            this._bgMusic = createjs.Sound.play("level1bgm");
+            this._bgMusic.loop = -1;
+            this._bgMusic.volume = 0.1;
+
             this._numOfBoxes = 3;
             this._numOfBullets = 3;
             this._background = new objects.Background();

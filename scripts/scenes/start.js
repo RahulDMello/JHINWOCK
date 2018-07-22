@@ -12,7 +12,6 @@ var scenes;
 (function (scenes) {
     var Start = /** @class */ (function (_super) {
         __extends(Start, _super);
-        // member variables
         // constructors
         function Start() {
             var _this = _super.call(this) || this;
@@ -23,6 +22,20 @@ var scenes;
         // public methods
         Start.prototype.Start = function () {
             //init member variables
+            this._bgMusic = createjs.Sound.play("startbgm");
+            this._bgMusic.loop = -1;
+            this._bgMusic.volume = 0.1;
+            this._background = new createjs.Bitmap(managers.Game.AssetManager.getResult("startbg"));
+            this._background.x = 0;
+            this._background.y = 0;
+            this._button = new createjs.Bitmap(managers.Game.AssetManager.getResult("play"));
+            this._button.regX = this._button.getBounds().width * 0.5;
+            this._button.regY = this._button.getBounds().height * 0.5;
+            this._button.x = config.Screen.HALF_WIDTH;
+            this._button.y = config.Screen.HALF_HEIGHT;
+            this._button.on("click", function () {
+                managers.Game.CurrentState = config.Scene.LEVEL1;
+            });
             this.Main();
         };
         Start.prototype.Update = function () {
@@ -35,6 +48,8 @@ var scenes;
         Start.prototype.Main = function () {
             console.log("starting - START SCENE");
             // add children
+            this.addChild(this._background);
+            this.addChild(this._button);
         };
         return Start;
     }(objects.Scene));

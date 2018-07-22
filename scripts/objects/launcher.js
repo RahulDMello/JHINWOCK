@@ -60,6 +60,9 @@ var objects;
         };
         Launcher.prototype.Reset = function () {
             this.y = Math.floor(Math.random() * (config.Screen.HEIGHT - this.height - config.Floor.HEIGHT)) + config.Floor.HEIGHT + this.height;
+            if (this.y > config.Screen.WIDTH - 140) {
+                this.y = config.Floor.HEIGHT + this.height;
+            }
             this.isHeadingIn = true;
             // this.y = Math.floor((Math.random() * config.Screen.HEIGHT / 3) + (config.Screen.HEIGHT / 3)) * this._index - config.Floor.HEIGHT;
         };

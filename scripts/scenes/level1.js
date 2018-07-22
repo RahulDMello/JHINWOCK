@@ -39,6 +39,9 @@ var scenes;
         };
         // public methods
         Level1.prototype.Start = function () {
+            this._bgMusic = createjs.Sound.play("level1bgm");
+            this._bgMusic.loop = -1;
+            this._bgMusic.volume = 0.1;
             this._numOfBoxes = 3;
             this._numOfBullets = 3;
             this._background = new objects.Background();

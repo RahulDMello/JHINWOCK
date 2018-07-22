@@ -12,7 +12,6 @@ var scenes;
 (function (scenes) {
     var End = /** @class */ (function (_super) {
         __extends(End, _super);
-        // member variables
         // constructors
         function End() {
             var _this = _super.call(this) || this;
@@ -22,7 +21,23 @@ var scenes;
         // private methods
         // public methods
         End.prototype.Start = function () {
-            // init member variables
+            //init member variables
+            this._bgMusic = createjs.Sound.play("endbgm");
+            this._bgMusic.loop = -1;
+            this._bgMusic.volume = 0.1;
+            this._scoreLabel = new objects.ScoreText();
+            this._background = new createjs.Bitmap(managers.Game.AssetManager.getResult("endbg"));
+            this._background.x = 0;
+            this._background.y = 0;
+            this._button = new createjs.Bitmap(managers.Game.AssetManager.getResult("play"));
+            this._button.regX = this._button.getBounds().width * 0.5;
+            this._button.regY = this._button.getBounds().height * 0.5;
+            this._button.x = config.Screen.WIDTH - (this._button.getBounds().width * 0.5);
+            this._button.y = config.Screen.HEIGHT - (this._button.getBounds().height * 0.5);
+            this._button.on("click", function () {
+                managers.Score.SCORE = 0;
+                managers.Game.CurrentState = config.Scene.LEVEL1;
+            });
             this.Main();
         };
         End.prototype.Update = function () {
@@ -33,8 +48,11 @@ var scenes;
             this.removeAllChildren();
         };
         End.prototype.Main = function () {
-            console.log("starting - END SCENE");
+            console.log("starting - START SCENE");
             // add children
+            this.addChild(this._background);
+            this.addChild(this._button);
+            this.addChild(this._scoreLabel);
         };
         return End;
     }(objects.Scene));

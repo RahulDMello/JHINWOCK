@@ -13,7 +13,7 @@ module managers {
         }
 
         private static handleCollisionWithBullet(hero: objects.Hero, object: objects.GameObject): void {
-            let P1 = new math.Vec2(hero.x, hero.y);
+            let P1 = new math.Vec2(hero.x + (hero.width * 0.5), hero.y - (hero.height * 0.5));
             let P2 = new math.Vec2(object.x, object.y);
             if (math.Vec2.Distance(P1, P2) < hero.halfHeight + object.halfHeight) {
                 managers.Game.CurrentState = config.Scene.END;

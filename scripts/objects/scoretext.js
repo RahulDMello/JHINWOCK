@@ -30,6 +30,7 @@ var objects;
             this.y = 20;
             this.text = "Score: " + managers.Score.SCORE;
             this.color = "#fff";
+            this.font = "bold 48px Consolus";
         };
         ScoreText.prototype.Update = function () {
             this.text = "Score: " + managers.Score.SCORE;
