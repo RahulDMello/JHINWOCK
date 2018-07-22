@@ -13,15 +13,9 @@ module managers {
             if(hero.x > object.x - hero.getBounds().width + 50 && hero.x < object.x + object.getBounds().width - 50) {
                 if(hero.y <= object.y - object.getBounds().height) {
                     hero.y = object.y - object.getBounds().height + 5;
-<<<<<<< HEAD
-                    config.ObjectSpeed.SPEED = 5;
-                } else {
-                    config.ObjectSpeed.SPEED = 0;
-=======
                     //config.ObjectSpeed.SPEED = 5;
                 } else {
                     //config.ObjectSpeed.SPEED = 0;
->>>>>>> 340b993ab83fec6995f6f97ff391eda33d9b9e60
                 }
             }
         }

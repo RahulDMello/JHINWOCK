@@ -44,7 +44,6 @@ module objects {
                         break;
                 }
             });
-            console.log(this.isHeadingIn);
             if(this.isHeadingIn) {
                 this.x -= (this._movespd * multiplier);
             } else {

@@ -40,14 +40,18 @@ var scenes;
         // public methods
         Level1.prototype.Start = function () {
             this._numOfBoxes = 3;
-            this._numOfLaunchers = 2;
+            this._numOfBullets = 3;
             this._background = new objects.Background();
             this._floor = new objects.Floor();
             this._boxes = new Array();
             this._hero = new objects.Hero();
             this._launcher = new objects.Launcher();
+            this._bullets = new Array();
             for (var i = 0; i < this._numOfBoxes; i++) {
                 this._boxes.push(new objects.Box(i + 1));
+            }
+            for (var i = 0; i < this._numOfBullets; i++) {
+                this._bullets.push(new objects.Bullet(this._launcher.y - (this._launcher.getBounds().height * 0.5), i + 1));
             }
             this.Main();
         };
@@ -60,10 +64,13 @@ var scenes;
                 box.Update(keyCodes);
             });
             this._launcher.Update(keyCodes);
+            this._bullets.forEach(function (bullet) { return bullet.NextY = _this._launcher.y - (_this._launcher.getBounds().height * 0.5); });
             this.fixBoxes();
             this._hero.Update(keyCodes);
+            this._bullets.forEach(function (bullet) { return bullet.Update(keyCodes); });
             //collision check
             this._boxes.forEach(function (box) { return managers.Collision.check(_this._hero, box); });
+            this._bullets.forEach(function (bullet) { return managers.Collision.check(_this._hero, bullet); });
         };
         Level1.prototype.Reset = function () {
         };
@@ -80,6 +87,7 @@ var scenes;
                 _this.addChild(box);
             });
             this.addChild(this._hero);
+            this._bullets.forEach(function (bullet) { return _this.addChild(bullet); });
             this.addChild(this._launcher);
         };
         return Level1;

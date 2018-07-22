@@ -7,7 +7,8 @@ module scenes {
         private _numOfBoxes: Number;
         private _hero: objects.Hero;
         private _launcher: objects.Launcher;
-        private _numOfLaunchers: number;
+        private _bullets: objects.Bullet[];
+        private _numOfBullets: number;s
 
         // constructors
         constructor() {
@@ -40,15 +41,20 @@ module scenes {
         // public methods
         public Start():void {
             this._numOfBoxes = 3;
-            this._numOfLaunchers = 2;
+            this._numOfBullets = 3;
             this._background = new objects.Background();
             this._floor = new objects.Floor();
             this._boxes = new Array<objects.Box>();
             this._hero = new objects.Hero();
             this._launcher = new objects.Launcher();
+            this._bullets = new Array<objects.Bullet>();
             
             for(let i = 0; i < this._numOfBoxes; i++) {
                 this._boxes.push(new objects.Box(i+1));
+            }
+
+            for(let i = 0; i < this._numOfBullets; i++) {
+                this._bullets.push(new objects.Bullet(this._launcher.y - (this._launcher.getBounds().height * 0.5), i+1));
             }
 
             this.Main();
@@ -65,12 +71,18 @@ module scenes {
 
             this._launcher.Update(keyCodes);
 
+            this._bullets.forEach(bullet => bullet.NextY = this._launcher.y - (this._launcher.getBounds().height * 0.5));
+
             this.fixBoxes();
 
             this._hero.Update(keyCodes);
 
+            this._bullets.forEach(bullet => bullet.Update(keyCodes));
+
             //collision check
             this._boxes.forEach(box => managers.Collision.check(this._hero, box));
+
+            this._bullets.forEach(bullet => managers.Collision.check(this._hero, bullet));
             
         }
 
@@ -91,6 +103,7 @@ module scenes {
                 this.addChild(box);
             });
             this.addChild(this._hero);
+            this._bullets.forEach(bullet => this.addChild(bullet));
             this.addChild(this._launcher);
         }
     }

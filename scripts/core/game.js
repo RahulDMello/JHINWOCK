@@ -14,7 +14,8 @@
         { id: "box", src: "/Assets/images/dummy.png" },
         { id: "launcher", src: "/Assets/images/tower.png" },
         { id: "hero", src: "/Assets/images/hero.png" },
-        { id: "launcher", src: "Assets/images/tower.png" }
+        { id: "launcher", src: "Assets/images/tower.png" },
+        { id: "bullet", src: "Assets/images/bullet_02.png" }
     ];
     function Init() {
         keyCodes = new Array();
@@ -28,7 +29,6 @@
             if (index > -1) {
                 keyCodes.splice(index, 1);
             }
-            console.log(keyCodes);
         };
         console.log("%c Assets Loading...", "font-weight:bold; font-size:20px; color: green;");
         AssetManager = new createjs.LoadQueue();
