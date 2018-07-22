@@ -63,7 +63,7 @@ module scenes {
                 box.Update(keyCodes);
             });
 
-            this._launcher.Update();
+            this._launcher.Update(keyCodes);
 
             this.fixBoxes();
 

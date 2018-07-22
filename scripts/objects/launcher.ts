@@ -1,9 +1,7 @@
 module objects {
-    export class Launcher extends createjs.Bitmap {
+    export class Launcher extends objects.GameObject {
         //member variables
         private _movespd: number;
-        private width: number;
-        private height: number;
         private isHeadingIn: boolean;
 
         /**
@@ -11,10 +9,8 @@ module objects {
          * @memberof launcher
          */
         constructor() {
-            super(managers.Game.AssetManager.getResult("launcher"));
-            this.width = this.getBounds().width;
-            this.height = this.getBounds().height;
-            this._movespd = 5;
+            super("launcher");
+            this._movespd = 3;
             this.isHeadingIn = true;
             this.Start();
         }
@@ -38,12 +34,21 @@ module objects {
             this.Reset();
         }
 
-        public Update():void {
+        public Update(keyCodes: Array<number>):void {
+            let multiplier = 1;
+            keyCodes.forEach(keyCode => {
+                switch(keyCode) {
+                    case 68:  // D key
+                    case 39:  // right arrow key
+                        multiplier = 2;
+                        break;
+                }
+            });
             console.log(this.isHeadingIn);
             if(this.isHeadingIn) {
-                this.x -= this._movespd;
+                this.x -= (this._movespd * multiplier);
             } else {
-                this.x += this._movespd;
+                this.x += (this._movespd);
             }
             this._checkbounds();
         }

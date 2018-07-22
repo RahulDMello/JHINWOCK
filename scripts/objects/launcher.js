@@ -17,10 +17,8 @@ var objects;
          * @memberof launcher
          */
         function Launcher() {
-            var _this = _super.call(this, managers.Game.AssetManager.getResult("launcher")) || this;
-            _this.width = _this.getBounds().width;
-            _this.height = _this.getBounds().height;
-            _this._movespd = 5;
+            var _this = _super.call(this, "launcher") || this;
+            _this._movespd = 3;
             _this.isHeadingIn = true;
             _this.Start();
             return _this;
@@ -42,13 +40,22 @@ var objects;
             this.x = config.Screen.WIDTH + this.width + 5;
             this.Reset();
         };
-        Launcher.prototype.Update = function () {
+        Launcher.prototype.Update = function (keyCodes) {
+            var multiplier = 1;
+            keyCodes.forEach(function (keyCode) {
+                switch (keyCode) {
+                    case 68: // D key
+                    case 39: // right arrow key
+                        multiplier = 2;
+                        break;
+                }
+            });
             console.log(this.isHeadingIn);
             if (this.isHeadingIn) {
-                this.x -= this._movespd;
+                this.x -= (this._movespd * multiplier);
             }
             else {
-                this.x += this._movespd;
+                this.x += (this._movespd);
             }
             this._checkbounds();
         };
@@ -58,7 +65,7 @@ var objects;
             // this.y = Math.floor((Math.random() * config.Screen.HEIGHT / 3) + (config.Screen.HEIGHT / 3)) * this._index - config.Floor.HEIGHT;
         };
         return Launcher;
-    }(createjs.Bitmap));
+    }(objects.GameObject));
     objects.Launcher = Launcher;
 })(objects || (objects = {}));
 //# sourceMappingURL=launcher.js.map
