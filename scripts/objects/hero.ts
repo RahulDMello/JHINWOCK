@@ -1,19 +1,19 @@
 module objects {
-    export class Hero extends createjs.Bitmap {
+    export class Hero extends objects.GameObject {
         //member variables
         private _isJumping: boolean;
         private _isFalling: boolean;
         private _jumpStep: number;
         private _gravity: number;
         private _maxJumpHeight: number;
-        private _minY: number;
+        public _minY: number;
 
         /**
          *Creates an instance of Ocean.
          * @memberof Background
          */
         constructor() {
-            super(managers.Game.AssetManager.getResult("hero"));
+            super("hero");
             this._isJumping = false;
             this._isFalling = false;
             this._jumpStep = -16;
@@ -51,6 +51,12 @@ module objects {
                     case 68:  // D key
                     case 39:  // right arrow key
                         //this.x += config.ObjectSpeed.SPEED;
+                        break;
+                    case 83:
+                    case 40:
+                        this._isJumping = false;
+                        this._isFalling = true;
+                        this.y -= this._gravity;
                         break;
                     case 32:
                     case 87:

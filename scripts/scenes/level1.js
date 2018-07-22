@@ -50,6 +50,7 @@ var scenes;
             this.Main();
         };
         Level1.prototype.Update = function (keyCodes) {
+            var _this = this;
             //update objects
             this._background.Update();
             this._floor.Update(keyCodes);
@@ -59,6 +60,7 @@ var scenes;
             this.fixBoxes();
             this._hero.Update(keyCodes);
             //collision check
+            this._boxes.forEach(function (box) { return managers.Collision.check(_this._hero, box); });
         };
         Level1.prototype.Reset = function () {
         };

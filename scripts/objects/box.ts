@@ -1,5 +1,5 @@
 module objects {
-    export class Box extends createjs.Bitmap {
+    export class Box extends GameObject {
         //member variables
         private _index: number;
 
@@ -8,7 +8,7 @@ module objects {
          * @memberof Background
          */
         constructor(index: number) {
-            super(managers.Game.AssetManager.getResult("box"));
+            super("box");
             this._index = index;
             this.Start();
         }

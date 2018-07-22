@@ -17,7 +17,7 @@ var objects;
          * @memberof Background
          */
         function Hero() {
-            var _this = _super.call(this, managers.Game.AssetManager.getResult("hero")) || this;
+            var _this = _super.call(this, "hero") || this;
             _this._isJumping = false;
             _this._isFalling = false;
             _this._jumpStep = -16;
@@ -55,6 +55,12 @@ var objects;
                     case 39: // right arrow key
                         //this.x += config.ObjectSpeed.SPEED;
                         break;
+                    case 83:
+                    case 40:
+                        _this._isJumping = false;
+                        _this._isFalling = true;
+                        _this.y -= _this._gravity;
+                        break;
                     case 32:
                     case 87:
                     case 38:
@@ -72,7 +78,7 @@ var objects;
             this.y = this._minY;
         };
         return Hero;
-    }(createjs.Bitmap));
+    }(objects.GameObject));
     objects.Hero = Hero;
 })(objects || (objects = {}));
 //# sourceMappingURL=hero.js.map

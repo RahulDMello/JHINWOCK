@@ -30,7 +30,7 @@ var objects;
         // public methods
         GameObject.prototype.Start = function () {
         };
-        GameObject.prototype.Update = function () {
+        GameObject.prototype.Update = function (keyCodes) {
         };
         GameObject.prototype.Reset = function () {
         };

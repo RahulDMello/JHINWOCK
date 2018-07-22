@@ -32,7 +32,7 @@ module objects {
 
         }
 
-        public Update():void {
+        public Update(keyCodes: Array<number>):void {
 
         }
 

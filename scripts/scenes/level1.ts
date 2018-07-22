@@ -64,6 +64,7 @@ module scenes {
             this._hero.Update(keyCodes);
 
             //collision check
+            this._boxes.forEach(box => managers.Collision.check(this._hero, box));
             
         }
 

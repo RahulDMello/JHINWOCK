@@ -17,7 +17,7 @@ var objects;
          * @memberof Background
          */
         function Box(index) {
-            var _this = _super.call(this, managers.Game.AssetManager.getResult("box")) || this;
+            var _this = _super.call(this, "box") || this;
             _this._index = index;
             _this.Start();
             return _this;
@@ -56,7 +56,7 @@ var objects;
             this.x = Math.floor(Math.random() * config.Screen.WIDTH) + (config.Screen.WIDTH * this._index);
         };
         return Box;
-    }(createjs.Bitmap));
+    }(objects.GameObject));
     objects.Box = Box;
 })(objects || (objects = {}));
 //# sourceMappingURL=box.js.map
