@@ -86,6 +86,7 @@ var scenes;
         Level1.prototype.Reset = function () {
         };
         Level1.prototype.Destroy = function () {
+            this._bgMusic.stop();
             this.removeAllChildren();
         };
         Level1.prototype.Main = function () {

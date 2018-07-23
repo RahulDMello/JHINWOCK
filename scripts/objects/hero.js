@@ -49,7 +49,6 @@ var objects;
         };
         Hero.prototype.Update = function (keyCodes) {
             var _this = this;
-            var oldJumpState = this._isJumping;
             keyCodes.forEach(function (keyCode) {
                 switch (keyCode) {
                     case 68: // D key
@@ -65,6 +64,10 @@ var objects;
                     case 32:
                     case 87:
                     case 38:
+                        if (!_this._isJumping) {
+                            _this._jumpMusic = createjs.Sound.play("jump");
+                            _this._jumpMusic.volume = 0.2;
+                        }
                         _this._isJumping = !_this._isFalling;
                         break;
                 }
@@ -72,9 +75,6 @@ var objects;
             this.y -= this._gravity;
             if (this._isJumping) {
                 this.y += this._jumpStep;
-            }
-            if (this._isJumping && this._isJumping != oldJumpState) {
-                createjs.Sound.play("jump").volume = 0.1;
             }
             this._checkBounds();
         };

@@ -46,6 +46,7 @@ module scenes {
         }
 
         public Destroy():void {
+            this._bgMusic.stop();
             this.removeAllChildren();
         }
 

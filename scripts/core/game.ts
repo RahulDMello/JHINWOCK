@@ -24,7 +24,7 @@
         //sounds
         {id:"startbgm", src:"Assets/audio/mainmenu.mp3"},
         {id:"level1bgm", src:"Assets/audio/stage1.mp3"},
-        {id:"jump", src:"Assets/audio/jump.m4r"},
+        {id:"jump", src:"Assets/audio/jump.mp3"},
         {id:"endbgm", src:"Assets/audio/gameover.mp3"}
     ]
 

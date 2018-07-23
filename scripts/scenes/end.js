@@ -45,6 +45,7 @@ var scenes;
         End.prototype.Reset = function () {
         };
         End.prototype.Destroy = function () {
+            this._bgMusic.stop();
             this.removeAllChildren();
         };
         End.prototype.Main = function () {

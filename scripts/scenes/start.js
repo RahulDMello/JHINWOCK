@@ -43,6 +43,7 @@ var scenes;
         Start.prototype.Reset = function () {
         };
         Start.prototype.Destroy = function () {
+            this._bgMusic.stop();
             this.removeAllChildren();
         };
         Start.prototype.Main = function () {
