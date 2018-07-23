@@ -7,6 +7,7 @@ module objects {
         private _gravity: number;
         private _maxJumpHeight: number;
         public _minY: number;
+        private _jumpMusic: createjs.AbstractSoundInstance;
 
         /**
          *Creates an instance of Ocean.
@@ -46,7 +47,6 @@ module objects {
         }
 
         public Update(keyCodes: Array<number>):void {
-            let oldJumpState = this._isJumping;
             keyCodes.forEach(keyCode => {
                 switch(keyCode) {
                     case 68:  // D key
@@ -62,6 +62,10 @@ module objects {
                     case 32:
                     case 87:
                     case 38:
+                        if(!this._isJumping) {
+                            this._jumpMusic = createjs.Sound.play("jump");
+                            this._jumpMusic.volume = 0.1;           
+                        }
                         this._isJumping = !this._isFalling;
                         break;
                 }
@@ -70,10 +74,6 @@ module objects {
             this.y -= this._gravity;
             if(this._isJumping) {
                 this.y += this._jumpStep;
-            }
-
-            if(this._isJumping && this._isJumping != oldJumpState) {
-                createjs.Sound.play("jump").volume = 0.1; 
             }
 
             this._checkBounds();
