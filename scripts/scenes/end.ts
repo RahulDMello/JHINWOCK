@@ -32,8 +32,8 @@ module scenes {
             this._button = new createjs.Bitmap(managers.Game.AssetManager.getResult("play"));
             this._button.regX = this._button.getBounds().width * 0.5;
             this._button.regY = this._button.getBounds().height * 0.5;
-            this._button.x = config.Screen.WIDTH - (this._button.getBounds().width * 0.5);
-            this._button.y = config.Screen.HEIGHT - (this._button.getBounds().height * 0.5);
+            this._button.x = config.Screen.HALF_WIDTH - 250;
+            this._button.y = config.Screen.HALF_HEIGHT + 50;
             this._button.on("click", function() {
                 managers.Score.SCORE = 0;
                 managers.Game.CurrentState = config.Scene.LEVEL1;

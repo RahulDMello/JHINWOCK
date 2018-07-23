@@ -64,7 +64,7 @@ module objects {
                     case 38:
                         if(!this._isJumping) {
                             this._jumpMusic = createjs.Sound.play("jump");
-                            this._jumpMusic.volume = 0.1;           
+                            this._jumpMusic.volume = 0.2;           
                         }
                         this._isJumping = !this._isFalling;
                         break;
