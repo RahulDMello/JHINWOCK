@@ -32,12 +32,8 @@ var scenes;
             this._button.regX = this._button.getBounds().width * 0.5;
             this._button.regY = this._button.getBounds().height * 0.5;
             this._button.x = config.Screen.HALF_WIDTH;
-<<<<<<< HEAD
-            this._button.y = config.Screen.HALF_HEIGHT + 200;
-=======
             this._button.y = config.Screen.HALF_HEIGHT + 80;
             this._button.alpha = 0.8;
->>>>>>> a31cb5c105885a305f03a0ed03736e41a4e55ebd
             this._button.on("click", function () {
                 managers.Game.CurrentState = config.Scene.LEVEL1;
             });
