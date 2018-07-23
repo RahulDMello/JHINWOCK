@@ -66,7 +66,7 @@ var objects;
                     case 38:
                         if (!_this._isJumping) {
                             _this._jumpMusic = createjs.Sound.play("jump");
-                            _this._jumpMusic.volume = 0.1;
+                            _this._jumpMusic.volume = 0.2;
                         }
                         _this._isJumping = !_this._isFalling;
                         break;

@@ -30,7 +30,8 @@ module scenes {
             this._button.regX = this._button.getBounds().width * 0.5;
             this._button.regY = this._button.getBounds().height * 0.5;
             this._button.x = config.Screen.HALF_WIDTH;
-            this._button.y = config.Screen.HALF_HEIGHT;
+            this._button.y = config.Screen.HALF_HEIGHT + 80;
+            this._button.alpha = 0.8;
             this._button.on("click", function() {
                 managers.Game.CurrentState = config.Scene.LEVEL1;
             });
