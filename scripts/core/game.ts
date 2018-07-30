@@ -11,21 +11,6 @@
 
     let Manifest = [
         //images
-        {id: "bg", src:"/assets/images/bg.png"},
-        {id: "floor", src:"/assets/images/floor.png"},
-        {id: "box", src:"/assets/images/dummy.png"},
-        {id: "launcher", src:"/assets/images/tower.png"},
-        {id: "hero", src:"/assets/images/hero.png"},
-        {id:"launcher", src:"/assets/images/tower.png"},
-        {id:"bullet", src:"/assets/images/bullet_02.png"},
-        {id:"play", src:"/assets/images/Startbutton.png"},
-        {id:"startbg", src:"/assets/images/mainmenu.png"},
-        {id:"endbg", src:"/assets/images/stageclear.png"},
-        //sounds
-        {id:"startbgm", src:"/assets/audio/mainmenu.mp3"},
-        {id:"level1bgm", src:"/assets/audio/stage1.mp3"},
-        {id:"jump", src:"/assets/audio/jump.mp3"},
-        {id:"endbgm", src:"/assets/audio/gameover.mp3"}
     ]
 
 
