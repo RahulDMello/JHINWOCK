@@ -12,6 +12,7 @@ module scenes {
         private _scoreText: objects.ScoreText;
         private _livesText: objects.LivesText;
         private _bgMusic: createjs.AbstractSoundInstance;
+        private _portal: objects.Portal;
 
         // constructors
         constructor() {
@@ -58,6 +59,8 @@ module scenes {
             this._bullets = new Array<objects.Bullet>();
             this._scoreText = new objects.ScoreText();
             this._livesText = new objects.LivesText();
+
+            this._portal = new objects.Portal();
             
             for(let i = 0; i < this._numOfBoxes; i++) {
                 this._boxes.push(new objects.Box(i+1));
@@ -104,6 +107,9 @@ module scenes {
 
             this._scoreText.Update();
             this._livesText.Update();
+
+            this._portal.Update(keyCodes);
+            managers.Collision.check(this._hero, this._portal);
             
         }
 
@@ -125,6 +131,7 @@ module scenes {
                 this.addChild(box);
             });
             this.addChild(this._hero);
+            this.addChild(this._portal);
             this._bullets.forEach(bullet => this.addChild(bullet));
             this.addChild(this._launcher);
             this.addChild(this._scoreText);

@@ -11,6 +11,19 @@ var managers;
                 case "bullet":
                     Collision.handleCollisionWithBullet(hero, otherObj);
                     break;
+                case "portal":
+                    Collision.handleCollisionWithPortal(hero, otherObj);
+                    break;
+            }
+        };
+        Collision.handleCollisionWithPortal = function (hero, object) {
+            if (hero.x > object.x - hero.getBounds().width && hero.x < object.x + object.getBounds().width) {
+                if (hero.y <= object.y + hero.height && hero.y >= object.y - object.height) {
+                    managers.Game.CurrentState = config.Scene.LEVEL2;
+                    // sound
+                }
+                else {
+                }
             }
         };
         Collision.handleCollisionWithBullet = function (hero, object) {

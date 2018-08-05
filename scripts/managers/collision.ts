@@ -5,10 +5,24 @@ module managers {
             switch(otherObj.name) {
                 case "box":
                     Collision.handleCollisionWithBox(hero, otherObj);
-                break;
+                    break;
                 case "bullet":
                     Collision.handleCollisionWithBullet(hero, otherObj);
-                break;
+                    break;
+                case "portal":
+                    Collision.handleCollisionWithPortal(hero, otherObj);
+                    break;
+            }
+        }
+
+        private static handleCollisionWithPortal(hero: objects.Hero, object: objects.GameObject): void {
+            if(hero.x > object.x - hero.getBounds().width && hero.x < object.x + object.getBounds().width) {
+                if(hero.y <= object.y + hero.height && hero.y >= object.y - object.height) {
+                    managers.Game.CurrentState = config.Scene.LEVEL2;
+                    // sound
+                } else {
+                    
+                }
             }
         }
 
