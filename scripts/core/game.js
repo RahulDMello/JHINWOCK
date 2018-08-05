@@ -19,6 +19,10 @@
         { id: "play", src: "/Assets/images/Startbutton.png" },
         { id: "startbg", src: "/Assets/images/mainmenu.png" },
         { id: "endbg", src: "/Assets/images/stageclear.png" },
+        { id: "canon", src: "/Assets/images/canon.png" },
+        { id: "meteor", src: "/Assets/images/meteor.png" },
+        { id: "playerbullet", src: "/Assets/images/bullet.png" },
+        { id: "background", src: "/Assets/images/background.png" },
         { id: "portal", src: "/Assets/images/portal.png" },
         //sounds
         { id: "startbgm", src: "/Assets/audio/mainmenu.mp3" },
