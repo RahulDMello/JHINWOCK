@@ -35,9 +35,11 @@ var scenes;
             this._ocean = new objects.Background2();
             // creates an empty array of type Cloud
             this._meteors = new Array();
-            this._meteorNum = 3;
+            this._meteorNum = 4;
             this._scoreText = new objects.ScoreText();
             this._livesText = new objects.LivesText();
+            this._timer = new objects.Timer();
+            this._portal = new objects.Portal2();
             this._frame = 60;
             this._buildClouds();
             this.Main();
@@ -49,6 +51,9 @@ var scenes;
             this._ocean.Update();
             this._scoreText.Update();
             this._livesText.Update();
+            this._timer.Update();
+            this._portal.Update();
+            managers.Collision.checkCanonPortal2(this._canon, this._portal);
             this._meteors.forEach(function (meteor) {
                 meteor.Update();
                 managers.Collision.checkMeteorCanon(_this._canon, meteor);
@@ -96,6 +101,8 @@ var scenes;
             }
             this.addChild(this._scoreText);
             this.addChild(this._livesText);
+            this.addChild(this._timer);
+            this.addChild(this._portal);
         };
         return Level2;
     }(objects.Scene));

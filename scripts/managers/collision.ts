@@ -50,6 +50,13 @@ module managers {
             }
         }
 
+        public static checkCanonPortal2(hero: objects.Canon, object: objects.GameObject): void {
+            if(object.y >= hero.y) {
+                managers.Game.CurrentState = config.Scene.LEVEL3;
+                // sound ?
+            }
+        }
+
         public static checkMeteorBullet(
             object1: objects.PlayerBullet,
             object2: objects.Meteor

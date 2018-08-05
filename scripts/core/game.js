@@ -23,6 +23,7 @@
         { id: "meteor", src: "/Assets/images/meteor.png" },
         { id: "playerbullet", src: "/Assets/images/bullet.png" },
         { id: "background", src: "/Assets/images/background.png" },
+        { id: "portal2", src: "/Assets/images/portal2.png" },
         { id: "portal", src: "/Assets/images/portal.png" },
         //sounds
         { id: "startbgm", src: "/Assets/audio/mainmenu.mp3" },

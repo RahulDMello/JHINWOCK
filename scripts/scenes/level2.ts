@@ -9,6 +9,8 @@ module scenes {
          private _frame: number;
          private _scoreText: objects.ScoreText;
          private _livesText: objects.LivesText;
+         private _timer: objects.Timer;
+         private _portal: objects.Portal2;
          
          public engineSound:createjs.AbstractSoundInstance;
  
@@ -40,11 +42,14 @@ module scenes {
  
              // creates an empty array of type Cloud
              this._meteors = new Array<objects.Meteor>();
-             this._meteorNum = 3;
+             this._meteorNum = 4;
              
              this._scoreText = new objects.ScoreText();
              this._livesText = new objects.LivesText();
+             this._timer = new objects.Timer();
  
+            this._portal = new objects.Portal2();
+
              this._frame = 60;
  
              this._buildClouds();
@@ -57,10 +62,14 @@ module scenes {
  
              this._canon.Update();
              this._ocean.Update();
-
              
              this._scoreText.Update();
              this._livesText.Update();
+
+             this._timer.Update();
+
+             this._portal.Update();
+            managers.Collision.checkCanonPortal2(this._canon, this._portal);
  
              this._meteors.forEach(meteor => {
                  meteor.Update();
@@ -121,6 +130,8 @@ module scenes {
 
              this.addChild(this._scoreText);
              this.addChild(this._livesText);
+             this.addChild(this._timer);
+             this.addChild(this._portal);
 
          }
      }

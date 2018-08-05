@@ -49,6 +49,12 @@ var managers;
                 }
             }
         };
+        Collision.checkCanonPortal2 = function (hero, object) {
+            if (object.y >= hero.y) {
+                managers.Game.CurrentState = config.Scene.LEVEL3;
+                // sound ?
+            }
+        };
         Collision.checkMeteorBullet = function (object1, object2) {
             var P1 = new math.Vec2(object1.x, object1.y);
             var P2 = new math.Vec2(object2.x, object2.y);
