@@ -51,6 +51,7 @@ var scenes;
             this._launcher = new objects.Launcher();
             this._bullets = new Array();
             this._scoreText = new objects.ScoreText();
+            this._livesText = new objects.LivesText();
             for (var i = 0; i < this._numOfBoxes; i++) {
                 this._boxes.push(new objects.Box(i + 1));
             }
@@ -82,6 +83,7 @@ var scenes;
             this._boxes.forEach(function (box) { return managers.Collision.check(_this._hero, box); });
             this._bullets.forEach(function (bullet) { return managers.Collision.check(_this._hero, bullet); });
             this._scoreText.Update();
+            this._livesText.Update();
         };
         Level1.prototype.Reset = function () {
         };
@@ -102,6 +104,7 @@ var scenes;
             this._bullets.forEach(function (bullet) { return _this.addChild(bullet); });
             this.addChild(this._launcher);
             this.addChild(this._scoreText);
+            this.addChild(this._livesText);
         };
         return Level1;
     }(objects.Scene));

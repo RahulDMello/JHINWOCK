@@ -16,7 +16,6 @@
         {id: "box", src:"/Assets/images/dummy.png"},
         {id: "launcher", src:"/Assets/images/tower.png"},
         {id: "hero", src:"/Assets/images/hero.png"},
-        {id:"launcher", src:"/Assets/images/tower.png"},
         {id:"bullet", src:"/Assets/images/bullet_02.png"},
         {id:"play", src:"/Assets/images/Startbutton.png"},
         {id:"startbg", src:"/Assets/images/mainmenu.png"},

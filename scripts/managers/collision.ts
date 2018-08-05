@@ -16,7 +16,11 @@ module managers {
             let P1 = new math.Vec2(hero.x + (hero.width * 0.5), hero.y - (hero.height * 0.5));
             let P2 = new math.Vec2(object.x, object.y);
             if (math.Vec2.Distance(P1, P2) < hero.halfHeight + object.halfHeight) {
-                managers.Game.CurrentState = config.Scene.END;
+                object.x = -10;
+                managers.Score.LIVES -= 1;
+                if(managers.Score.LIVES <= 0) {
+                    managers.Game.CurrentState = config.Scene.END;
+                }
             }
         }
 

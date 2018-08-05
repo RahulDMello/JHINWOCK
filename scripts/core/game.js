@@ -15,16 +15,15 @@
         { id: "box", src: "/Assets/images/dummy.png" },
         { id: "launcher", src: "/Assets/images/tower.png" },
         { id: "hero", src: "/Assets/images/hero.png" },
-        { id: "launcher", src: "Assets/images/tower.png" },
-        { id: "bullet", src: "Assets/images/bullet_02.png" },
-        { id: "play", src: "Assets/images/Startbutton.png" },
-        { id: "startbg", src: "Assets/images/mainmenu.png" },
-        { id: "endbg", src: "Assets/images/stageclear.png" },
+        { id: "bullet", src: "/Assets/images/bullet_02.png" },
+        { id: "play", src: "/Assets/images/Startbutton.png" },
+        { id: "startbg", src: "/Assets/images/mainmenu.png" },
+        { id: "endbg", src: "/Assets/images/stageclear.png" },
         //sounds
-        { id: "startbgm", src: "Assets/audio/mainmenu.mp3" },
-        { id: "level1bgm", src: "Assets/audio/stage1.mp3" },
-        { id: "jump", src: "Assets/audio/jump.mp3" },
-        { id: "endbgm", src: "Assets/audio/gameover.mp3" }
+        { id: "startbgm", src: "/Assets/audio/mainmenu.mp3" },
+        { id: "level1bgm", src: "/Assets/audio/stage1.mp3" },
+        { id: "jump", src: "/Assets/audio/jump.mp3" },
+        { id: "endbgm", src: "/Assets/audio/gameover.mp3" }
     ];
     function Init() {
         keyCodes = new Array();

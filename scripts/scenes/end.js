@@ -36,6 +36,7 @@ var scenes;
             this._button.y = config.Screen.HALF_HEIGHT + 50;
             this._button.on("click", function () {
                 managers.Score.SCORE = 0;
+                managers.Score.LIVES = 5;
                 managers.Game.CurrentState = config.Scene.LEVEL1;
             });
             this.Main();
