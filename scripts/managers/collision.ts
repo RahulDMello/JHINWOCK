@@ -52,6 +52,7 @@ module managers {
 
         public static checkCanonPortal2(hero: objects.Canon, object: objects.GameObject): void {
             if(object.y >= hero.y) {
+                managers.Score.LIVES += 2;
                 managers.Game.CurrentState = config.Scene.LEVEL3;
                 // sound ?
             }

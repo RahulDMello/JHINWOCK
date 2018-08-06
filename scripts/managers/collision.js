@@ -51,6 +51,7 @@ var managers;
         };
         Collision.checkCanonPortal2 = function (hero, object) {
             if (object.y >= hero.y) {
+                managers.Score.LIVES += 2;
                 managers.Game.CurrentState = config.Scene.LEVEL3;
                 // sound ?
             }

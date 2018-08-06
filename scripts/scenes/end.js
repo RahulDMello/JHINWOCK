@@ -37,7 +37,7 @@ var scenes;
             this._button.on("click", function () {
                 managers.Score.SCORE = 0;
                 managers.Score.LIVES = 5;
-                managers.Game.CurrentState = config.Scene.LEVEL1;
+                managers.Game.CurrentState = config.Scene.LEVEL3;
             });
             this.Main();
         };
