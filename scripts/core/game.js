@@ -23,8 +23,11 @@
         { id: "meteor", src: "/Assets/images/meteor.png" },
         { id: "playerbullet", src: "/Assets/images/bullet.png" },
         { id: "background", src: "/Assets/images/background.png" },
+        { id: "background3", src: "/Assets/images/background3.jpeg" },
         { id: "portal2", src: "/Assets/images/portal2.png" },
         { id: "portal", src: "/Assets/images/portal.png" },
+        { id: "enemy", src: "/Assets/images/enemy.png" },
+        { id: "hero3", src: "/Assets/images/spaceship.png" },
         //sounds
         { id: "startbgm", src: "/Assets/audio/mainmenu.mp3" },
         { id: "level1bgm", src: "/Assets/audio/stage1.mp3" },

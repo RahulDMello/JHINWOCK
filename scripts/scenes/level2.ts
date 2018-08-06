@@ -34,7 +34,7 @@ module scenes {
              this.engineSound = createjs.Sound.play("bgmusic");
              this.engineSound.loop = -1;
              this.engineSound.volume = 0.1;
- 
+
              this._bullets = new Array<objects.PlayerBullet>();
  
              this._canon = new objects.Canon();
