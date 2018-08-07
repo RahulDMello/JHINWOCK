@@ -35,7 +35,7 @@ module objects {
         public Update():void {
             console.log(`Update ${this._index}`)
             this._frame++;
-            if(this._frame > 15 * this._index) {
+            if(this._frame > 10 * this._index) {
                 this.x += this.randX;
                 this.y += this.randY;
                 this._checkbounds();

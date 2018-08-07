@@ -52,7 +52,7 @@ module managers {
 
         public static checkCanonPortal2(hero: objects.Canon, object: objects.GameObject): void {
             if(object.y >= hero.y) {
-                managers.Score.LIVES += 2;
+                managers.Score.LIVES += 3;
                 managers.Game.CurrentState = config.Scene.LEVEL3;
                 // sound ?
             }
@@ -92,6 +92,22 @@ module managers {
               }
             }
           }
+
+        public static checkHero3Bullet3(hero: objects.Hero3, object: objects.GameObject) {
+            
+            let x = config.Screen.HALF_WIDTH + (275 * (Math.cos((hero.rotation + 170) * (22 / (180 * 7)))));
+            let y = config.Screen.HALF_HEIGHT + (275 * (Math.sin((hero.rotation + 170) * (22 / (180 * 7)))));
+
+            let P1 = new math.Vec2(x + (hero.width * 0.5), y - (hero.height * 0.5));
+            let P2 = new math.Vec2(object.x, object.y);
+            if (math.Vec2.Distance(P1, P2) < hero.halfHeight + object.halfHeight) {
+                object.x = -10;
+                managers.Score.LIVES -= 1;
+                if(managers.Score.LIVES <= 0) {
+                    managers.Game.CurrentState = config.Scene.END;
+                }
+            }
+        }
 
     }
 

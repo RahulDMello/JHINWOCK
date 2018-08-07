@@ -35,7 +35,7 @@ var scenes;
             this._button.y = config.Screen.HALF_HEIGHT + 80;
             this._button.alpha = 0.8;
             this._button.on("click", function () {
-                managers.Game.CurrentState = config.Scene.LEVEL3;
+                managers.Game.CurrentState = config.Scene.LEVEL1;
             });
             this.Main();
         };

@@ -51,7 +51,7 @@ var managers;
         };
         Collision.checkCanonPortal2 = function (hero, object) {
             if (object.y >= hero.y) {
-                managers.Score.LIVES += 2;
+                managers.Score.LIVES += 3;
                 managers.Game.CurrentState = config.Scene.LEVEL3;
                 // sound ?
             }
@@ -75,6 +75,19 @@ var managers;
                 object2.Reset();
                 var blast = createjs.Sound.play("blast");
                 blast.volume = 0.2;
+                managers.Score.LIVES -= 1;
+                if (managers.Score.LIVES <= 0) {
+                    managers.Game.CurrentState = config.Scene.END;
+                }
+            }
+        };
+        Collision.checkHero3Bullet3 = function (hero, object) {
+            var x = config.Screen.HALF_WIDTH + (275 * (Math.cos((hero.rotation + 170) * (22 / (180 * 7)))));
+            var y = config.Screen.HALF_HEIGHT + (275 * (Math.sin((hero.rotation + 170) * (22 / (180 * 7)))));
+            var P1 = new math.Vec2(x + (hero.width * 0.5), y - (hero.height * 0.5));
+            var P2 = new math.Vec2(object.x, object.y);
+            if (math.Vec2.Distance(P1, P2) < hero.halfHeight + object.halfHeight) {
+                object.x = -10;
                 managers.Score.LIVES -= 1;
                 if (managers.Score.LIVES <= 0) {
                     managers.Game.CurrentState = config.Scene.END;

@@ -30,8 +30,8 @@ module objects {
         }
 
         public Update(keyCodes: Array<number>):void {
-            let leftFlag: boolean = false;
-            let rightFlag: boolean = false;
+            let leftFlag: boolean = keyCodes.indexOf(32) != -1;
+            let rightFlag: boolean = keyCodes.indexOf(32) != -1;
             keyCodes.forEach(keyCode => {
                 switch(keyCode) {
                     case 68:  // D key
@@ -43,8 +43,10 @@ module objects {
                         break;
                     case 65:  // change to a
                     case 37:  // left arrow key
-                        this.rotation -= this._rotationSpeed;
-                        leftFlag = true;
+                        if(!leftFlag) {
+                            this.rotation -= this._rotationSpeed;
+                            leftFlag = true;
+                        }
                         break;
                     case 32:
                         // play laser sound

@@ -35,8 +35,8 @@ var objects;
         };
         Hero3.prototype.Update = function (keyCodes) {
             var _this = this;
-            var leftFlag = false;
-            var rightFlag = false;
+            var leftFlag = keyCodes.indexOf(32) != -1;
+            var rightFlag = keyCodes.indexOf(32) != -1;
             keyCodes.forEach(function (keyCode) {
                 switch (keyCode) {
                     case 68: // D key
@@ -48,8 +48,10 @@ var objects;
                         break;
                     case 65: // change to a
                     case 37: // left arrow key
-                        _this.rotation -= _this._rotationSpeed;
-                        leftFlag = true;
+                        if (!leftFlag) {
+                            _this.rotation -= _this._rotationSpeed;
+                            leftFlag = true;
+                        }
                         break;
                     case 32:
                         // play laser sound
