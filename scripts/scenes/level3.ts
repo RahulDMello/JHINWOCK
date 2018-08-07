@@ -78,6 +78,9 @@ module scenes {
                 this._line.graphics.lineTo(config.Screen.HALF_WIDTH, config.Screen.HALF_HEIGHT);
                 this._line.graphics.endStroke();
 
+                let laser = createjs.Sound.play("laser");
+                laser.volume = 0.1;
+
                 this._bosshp.HP--;
 
                 managers.Score.SCORE+=2;
@@ -110,6 +113,7 @@ module scenes {
         }
 
         public Destroy():void {
+            this._bgMusic.stop();
             this.removeAllChildren();
         }
 

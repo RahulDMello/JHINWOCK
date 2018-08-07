@@ -15,6 +15,9 @@ var scenes;
         // constructors
         function End() {
             var _this = _super.call(this) || this;
+            if (managers.Score.HIGHSCORE < managers.Score.SCORE) {
+                managers.Score.HIGHSCORE = managers.Score.SCORE;
+            }
             _this.Start();
             return _this;
         }
@@ -39,6 +42,7 @@ var scenes;
                 managers.Score.LIVES = 5;
                 managers.Game.CurrentState = config.Scene.LEVEL1;
             });
+            this._highscore = new objects.HighscoreText();
             this.Main();
         };
         End.prototype.Update = function () {
@@ -55,6 +59,7 @@ var scenes;
             this.addChild(this._background);
             this.addChild(this._button);
             this.addChild(this._scoreLabel);
+            this.addChild(this._highscore);
         };
         return End;
     }(objects.Scene));

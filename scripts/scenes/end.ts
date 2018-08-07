@@ -5,10 +5,15 @@ module scenes {
         private _button: createjs.Bitmap;
         private _scoreLabel: objects.ScoreText;
         private _bgMusic: createjs.AbstractSoundInstance;
+        private _highscore: objects.HighscoreText;
 
         // constructors
         constructor() {
             super();
+
+            if(managers.Score.HIGHSCORE < managers.Score.SCORE) {
+                managers.Score.HIGHSCORE = managers.Score.SCORE;
+            }
 
             this.Start();
         }
@@ -39,6 +44,8 @@ module scenes {
                 managers.Score.LIVES = 5;
                 managers.Game.CurrentState = config.Scene.LEVEL1;
             });
+
+            this._highscore = new objects.HighscoreText();
             this.Main();
         }
 
@@ -61,6 +68,7 @@ module scenes {
             this.addChild(this._background);
             this.addChild(this._button);
             this.addChild(this._scoreLabel);
+            this.addChild(this._highscore);
         }
     }
 }

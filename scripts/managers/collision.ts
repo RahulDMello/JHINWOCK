@@ -102,6 +102,8 @@ module managers {
             let P2 = new math.Vec2(object.x, object.y);
             if (math.Vec2.Distance(P1, P2) < hero.halfHeight + object.halfHeight) {
                 object.x = -10;
+                let blast = createjs.Sound.play("blast");
+                blast.volume = 0.2;
                 managers.Score.LIVES -= 1;
                 if(managers.Score.LIVES <= 0) {
                     managers.Game.CurrentState = config.Scene.END;

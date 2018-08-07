@@ -34,6 +34,10 @@
         {id:"level1bgm", src:"/Assets/audio/stage1.mp3"},
         {id:"jump", src:"/Assets/audio/jump.mp3"},
         {id:"level3bgm", src:"/Assets/audio/stage3.mp3"},
+        {id:"bgmusic", src:"/Assets/audio/stage2.mp3"},
+        {id:"bubble", src:"/Assets/audio/bubble.mp3"},
+        {id:"blast", src:"/Assets/audio/blast.mp3"},
+        {id:"laser", src:"/Assets/audio/laser.mp3"},
         {id:"endbgm", src:"/Assets/audio/gameover.mp3"}
     ]
 

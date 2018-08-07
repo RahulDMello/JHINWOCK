@@ -61,6 +61,8 @@ var scenes;
                 this._line.graphics.moveTo(x, y);
                 this._line.graphics.lineTo(config.Screen.HALF_WIDTH, config.Screen.HALF_HEIGHT);
                 this._line.graphics.endStroke();
+                var laser = createjs.Sound.play("laser");
+                laser.volume = 0.1;
                 this._bosshp.HP--;
                 managers.Score.SCORE += 2;
                 if (this._bosshp.HP <= 0) {
@@ -83,6 +85,7 @@ var scenes;
         Level3.prototype.Reset = function () {
         };
         Level3.prototype.Destroy = function () {
+            this._bgMusic.stop();
             this.removeAllChildren();
         };
         Level3.prototype.Main = function () {
