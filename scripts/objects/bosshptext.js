@@ -27,7 +27,7 @@ var objects;
             },
             set: function (value) {
                 this._hp = value;
-                this.text = "Time to portal: " + this._hp;
+                this.text = "Boss HP: " + this._hp;
             },
             enumerable: true,
             configurable: true

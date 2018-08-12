@@ -9,7 +9,7 @@ module objects {
 
         set HP(value) {
             this._hp = value;
-            this.text = "Time to portal: " + this._hp;
+            this.text = "Boss HP: " + this._hp;
         }
 
         /**
