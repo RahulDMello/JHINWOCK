@@ -27,7 +27,7 @@ module objects {
         public Start():void {
             // init
             this.x = 40;
-            this.y = 50;
+            this.y = 70;
             this.HP = 999;
             this.color = "#fff";
             this.font = "bold 48px Consolus"
